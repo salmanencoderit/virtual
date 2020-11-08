@@ -40,7 +40,7 @@ class VideoRoomsController extends Controller
                 ]);
             } 
         }
-        
+        $rooms = [];
         try{
             $client = new Client($this->sid, $this->token);
             $allRooms = $client->video->v1->rooms->read([], 20);
@@ -70,7 +70,7 @@ class VideoRoomsController extends Controller
             }, $allRooms);
             
         } catch (\Exception $e) {
-            echo "Error: " . $e->getMessage();
+            // echo "Error: " . $e->getMessage();
         }
         return view('index', ['rooms' => $rooms]);
     }
