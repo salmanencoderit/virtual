@@ -74,7 +74,14 @@ class RegisterController extends Controller
 
         */
 
-        return view('notification', compact($lastname, $name, $email, $company, $sector, $pass));
+        return view('notification', [
+                    'lastname' => $lastname,
+                    'name' => $name,
+                    'email' => $email,
+                    'company' => $company,
+                    'sector' => $sector,
+                    'pass' => $pass
+        ]);
 
         }
 
