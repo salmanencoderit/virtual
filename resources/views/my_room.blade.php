@@ -1,7 +1,7 @@
-<!doctype html>
 @extends('layouts.app')
 
 @section('content')
+<!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
