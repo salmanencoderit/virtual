@@ -18,7 +18,7 @@
                   <hr>
                   <br>
                   Ihr Namen: {{ $name }} {{ $lastname }}<br>
-                  @if {{ $role === 1 }} {
+                  @if ($role === 1) {
 
                     Rolle: Aussteller<br>
 
