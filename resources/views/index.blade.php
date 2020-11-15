@@ -63,7 +63,7 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-            
+
             .card-img img{
                 max-width: 100%;
             }
@@ -75,7 +75,7 @@
             height: 34px;
             }
 
-            .switch input { 
+            .switch input {
             opacity: 0;
             width: 0;
             height: 0;
@@ -157,7 +157,8 @@
           <div class="container">
             <div class="content">
                 <div class="title m-b-md">
-                    Video Chat Rooms
+                    VIRTUAL WEDDING EXPO<br>
+                    Österreichs erste Hybride Hochzeitsmesse
                 </div>
 
                 {{-- {!! Form::open(['url' => 'room/create']) !!}
@@ -182,10 +183,10 @@
                                 @endif
                                 </div>
                                 <div class="card-body">
-                                    {{ $room['name'] }}                       
+                                    {{ $room['name'] }}
                                 </div>
                             </div>
-                        </a> 
+                        </a>
                     </div>
                     @endif
                     @endforeach
@@ -197,10 +198,10 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-            
+
                 $(document).on('click', ".online", function() {
                     var online = $(this).val();
-                    
+
                         $.ajaxSetup({
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -217,10 +218,10 @@
                                     var main_url = "{{ env('APP_URL') }}";
                                     location.href= main_url+'/room/my-room';
                                 }
-                                
+
                             }
                         });
-                    
+
                 });
         </script>
     </body>

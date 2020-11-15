@@ -70,7 +70,7 @@
             height: 34px;
             }
 
-            .switch input { 
+            .switch input {
             opacity: 0;
             width: 0;
             height: 0;
@@ -221,7 +221,7 @@
                     @endauth
                 </div>
             @endif
-            
+
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -243,7 +243,7 @@
             @endif
             <div class="content">
                 <div class="title m-b-md">
-                    Video Chat Rooms
+                    Virtual Wedding Expo
                 </div>
 
                 <div id="media-div">
@@ -254,10 +254,10 @@
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-            
+
                 $(document).on('click', ".online", function() {
                     var online = $(this).val();
-                    
+
                         $.ajaxSetup({
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -273,10 +273,10 @@
                                 if(result.status == 'success'){
                                     partcipantLeave();
                                 }
-                                
+
                             }
                         });
-                    
+
                 });
         </script>
     </body>
