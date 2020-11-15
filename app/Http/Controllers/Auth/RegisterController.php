@@ -80,7 +80,7 @@ class RegisterController extends Controller
                     'email' => $email,
                     'company' => $company,
                     'sector' => $sector,
-                    'pass' => $pass
+                    'password' => $pass
         ]);
 
         }
