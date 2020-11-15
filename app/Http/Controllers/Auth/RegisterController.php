@@ -58,7 +58,7 @@ class RegisterController extends Controller
         $permitted = "123456789ABCDEFG";
         $pass = substr(str_shuffle($permitted), 0, 8);
 
-        $role = 1;
+        $role = '1';
 
         User::create([
         'name' => $name,
@@ -75,6 +75,7 @@ class RegisterController extends Controller
                     'lastname' => $lastname,
                     'name' => $name,
                     'email' => $email,
+                    'role' => $role,
                     'company' => $company,
                     'sector' => $sector,
                     'password' => $pass

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Notification - User wurde angelegt - Zugangsdaten') }}</div>
+                <div class="card-header">{{ __('Notification - User wurde angelegt - Zugangsdaten - Rolle: {{ $role }}') }}</div>
 
                 <div class="card-body">
                   <br>
