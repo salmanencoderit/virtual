@@ -158,8 +158,8 @@
             <div class="content">
                 <div class="title m-b-md">
                     VIRTUAL WEDDING EXPO<br>
-                    Österreichs erste Hybride Hochzeitsmesse
                 </div>
+                  Österreichs erste Hybride Hochzeitsmesse
 
                 {{-- {!! Form::open(['url' => 'room/create']) !!}
                     {!! Form::label('roomName', 'Create or Join a Video Chat Room') !!}
