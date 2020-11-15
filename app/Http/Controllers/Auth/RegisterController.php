@@ -60,8 +60,6 @@ class RegisterController extends Controller
 
         $role = 1;
 
-        /*
-
         User::create([
         'name' => $name,
         'lastname' => $lastname,
@@ -72,7 +70,6 @@ class RegisterController extends Controller
         'password' => bcrypt($pass),
         ]);
 
-        */
 
         return view('notification', [
                     'lastname' => $lastname,
