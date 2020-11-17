@@ -128,8 +128,13 @@ class VideoRoomsController extends Controller
 
             $user = User::where('email', Auth::user()->email)->first();
             $user->sid = $room->sid;
+            $user->online = 1;
             $user->save();
         }
+
+        $user = Auth::user();
+        $user->online = 1;
+        $user->save();
 
         $token = new AccessToken($this->sid, $this->key, $this->secret, 3600, $identity);
         
@@ -147,13 +152,10 @@ class VideoRoomsController extends Controller
 
         $exists = $client->video->v1->rooms(Auth::user()->email)->update("completed");
 
-        // if ($exists) {
-        //     $client->video->rooms->create([
-        //         'uniqueName' => Auth::user()->email,
-        //         'type' => 'group',
-        //         'recordParticipantsOnConnect' => false
-        //     ]);
-        // }
+        
+        $user = Auth::user();
+        $user->online = 0;
+        $user->save();
         return redirect('/');
     }
 
