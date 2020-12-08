@@ -7,7 +7,7 @@ use App\Http\Controllers\VideoRoomsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\MessagesController;
 
 // use App\Http\Middleware\CustomMiddleware;
 /*
@@ -37,6 +37,9 @@ Route::middleware('auth')->group(function() {
     Route::post('assign-exhibitor', [HomeController::class, 'assignExhibitor']);
     Route::get('user/add-avatar', [HomeController::class, 'addAvatar']);
     Route::post('user/store-avatar', [HomeController::class, 'storeAvatar']);
+
+    Route::get('messages', [MessagesController::class, 'index']);
+    Route::get('/messages/{ids}', [MessagesController::class, 'chat'])->name('messages.chat');
 
     Route::middleware(['auth', 'custom'])->prefix('room')->group(function() {
         Route::get('my-room', [VideoRoomsController::class, 'myRoom']);
