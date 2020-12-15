@@ -88,11 +88,10 @@ class RegisterController extends Controller
             'password'=>$pass
             );
 
-dd($data);
 
         if (View::exists('notification')) {
 
-          return view(['notification'], compact('data'));
+          return view(['notification'], compact($data));
             //
         } else {
 
