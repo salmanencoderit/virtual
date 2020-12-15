@@ -10,7 +10,7 @@
                 <div class="card-body">
                   <br>
                   Vielen Dank für Ihre Registrierung zur Virtual Wedding Expo!<br><br>
-                  Diese Website soll Ihnen helfen - nach der Hochzeitsmesse - mit den Besuchern in Kontakt<br>
+                  Diese Website soll Ihnen helfen - nach der WeddingExpo - mit den Besuchern in Kontakt<br>
                   zu treten. Sie finden unten stehend Ihre LoginDaten:<br><br>
                   Ihre E-Mail Adresse für das Login: {{ $user->email }}<br>
                   Ihr Passwort (Case-sensitive):     {{ $password }}<br>
