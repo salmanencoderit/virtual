@@ -66,6 +66,8 @@ class RegisterController extends Controller
 
     $role = 1;
 
+    dd($name);
+
     User::create([
     'name' => $name,
     'lastname' => $lastname,
@@ -75,14 +77,6 @@ class RegisterController extends Controller
     'sector' => $sector,
     'password' => bcrypt($pass),
     ]);
-
-    echo $name;
-    echo $lastname;
-    echo $email;
-    echo $role;
-    echo $company;
-    echo $sector;
-    echo $pass;
 
     $data = array(
             'name'=>$name,
