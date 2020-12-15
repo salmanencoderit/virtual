@@ -91,7 +91,7 @@ class RegisterController extends Controller
 
         if (View::exists('notification')) {
 
-          return view(['notification'], compact('data'));
+          return view('notification', compact('data'));
             //
         } else {
 
