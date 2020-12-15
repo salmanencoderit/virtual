@@ -79,7 +79,7 @@ class RegisterController extends Controller
     ]);
 
     $data = array(
-            'name'=>$firstname,
+            'firstname'=>$firstname,
             'lastname'=>$lastname,
             'user_email'=>$email,
             'role'=>$role,
