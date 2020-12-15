@@ -12,7 +12,7 @@
                   Vielen Dank für Ihre Registrierung zur Virtual Wedding Expo!<br><br>
                   Diese Website soll Ihnen helfen - nach der Hochzeitsmesse - mit den Besuchern in Kontakt<br>
                   zu treten. Sie finden unten stehend Ihre LoginDaten:<br><br>
-                  Ihre E-Mail Adresse für das Login: {{ email }}<br>
+                  Ihre E-Mail Adresse für das Login: {{ user_email }}<br>
                   Ihr Passwort (Case-sensitive):     {{ password }}<br>
                   <br>
                   <hr>
