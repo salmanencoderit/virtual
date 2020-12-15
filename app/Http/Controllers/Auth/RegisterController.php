@@ -67,8 +67,6 @@ class RegisterController extends Controller
 
     $role = 1;
 
-    dd($name);
-
     User::create([
     'name' => $name,
     'lastname' => $lastname,
