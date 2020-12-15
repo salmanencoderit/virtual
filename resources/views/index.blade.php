@@ -158,7 +158,7 @@
           <div class="container">
             <div class="content">
                 <div class="title m-b-md">
-                    WeddingExpo: Virtual Meeting Rooms
+                    <a href="{{ url('/home') }}" class="center"><img src="{{ asset('WExpo.png) }}"></a>
                 </div>
 
                 {{-- {!! Form::open(['url' => 'room/create']) !!}
