@@ -88,9 +88,9 @@ class RegisterController extends Controller
             'password'=>$pass
             );
 
-        if (View::exists('notification')) {
+dd($data);
 
-          echo "found";
+        if (View::exists('notification')) {
 
           return view(['notification'], compact('data'));
             //
