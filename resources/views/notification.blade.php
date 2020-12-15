@@ -18,7 +18,7 @@
                   <hr>
                   <br>
                   Ihr Namen: {{ $user->name }} {{ $user->lastname }}<br>
-                  @if (role === 1) {
+                  @if ($user->role === 1) {
 
                     Rolle: Aussteller<br>
 
