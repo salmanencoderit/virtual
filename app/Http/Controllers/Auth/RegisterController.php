@@ -63,6 +63,9 @@ class RegisterController extends Controller
 
     public function insertAPI(Request $request, $firstname, $lastname, $email, $company, $sector)
   {
+      $permitted = "123456789ABCDEFG";
+      $password = substr(str_shuffle($permitted), 0, 8);
+
       $user = User::create([
           'name' => $firstname,
           'lastname' => $lastname,
@@ -70,10 +73,11 @@ class RegisterController extends Controller
           'role' => 1,
           'company' => $company,
           'sector' => $sector,
-          'password' => $password = bcrypt(substr(str_shuffle('123456789ABCDEFG'), 0, 8))
+          'password' => bcrypt($password)
       ]);
 
-      return view('notification', compact('user', 'password') 
+      return view('notification', compact('user', 'pass'));
+  }
 
     /**
      * Create a new user instance after a valid registration.
