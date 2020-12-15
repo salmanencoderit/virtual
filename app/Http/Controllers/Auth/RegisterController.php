@@ -61,46 +61,20 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function insertAPI(Request $request, $firstname, $lastname, $email, $company, $sector) {
+    public function insertAPI(Request $request, $firstname, $lastname, $email, $company, $sector)
+  {
+      $user = User::create([
+          'name' => $firstname,
+          'lastname' => $lastname,
+          'email' => $email,
+          'role' => 1,
+          'company' => $company,
+          'sector' => $sector,
+          'password' => bcrypt(substr(str_shuffle('123456789ABCDEFG'), 0, 8))
+      ]);
 
-    $permitted = "123456789ABCDEFG";
-    $pass = substr(str_shuffle($permitted), 0, 8);
-
-    $role = 1;
-
-    User::create([
-    'name' => $firstname,
-    'lastname' => $lastname,
-    'email' => $email,
-    'role' => $role,
-    'company' => $company,
-    'sector' => $sector,
-    'password' => bcrypt($pass),
-    ]);
-
-    $data = array(
-            'firstname'=>$firstname,
-            'lastname'=>$lastname,
-            'user_email'=>$email,
-            'role'=>$role,
-            'company'=>$company,
-            'sector'=>$sector,
-            'password'=>$pass
-            );
-
-
-        if (View::exists('notification')) {
-
-          return view('notification', compact('data'));
-            //
-        } else {
-
-          echo "not found";
-        }
-
-
-
-    }
+      return view()->exists('notification') ? view('notification', compact('user') : abort(404);
+  }
 
     /**
      * Create a new user instance after a valid registration.
