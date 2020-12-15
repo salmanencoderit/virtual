@@ -77,7 +77,18 @@ class RegisterController extends Controller
     'password' => bcrypt($pass),
     ]);
 
-    return view([ 'notification' ], compact( ['name', 'lastname', 'email', 'role', 'company', 'sector', 'pass'] ));
+    $data = array(
+            'name'=>$name,
+            'lastname'=>$lastname,
+            'email'=>$email,
+            'role'=>$role,
+            'company'=>$company,
+            'sector'=>$sector,
+            'password'=>$pass
+            );
+
+
+    return view([ 'notification' ], compact('data'));
 
     }
 
