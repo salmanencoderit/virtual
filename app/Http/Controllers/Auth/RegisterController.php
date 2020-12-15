@@ -76,7 +76,7 @@ class RegisterController extends Controller
           'password' => bcrypt($password)
       ]);
 
-      return view('notification', compact('user', 'pass'));
+      return view('notification', compact('user', 'password'));
   }
 
     /**
