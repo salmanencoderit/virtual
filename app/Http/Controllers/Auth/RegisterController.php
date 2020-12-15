@@ -59,6 +59,45 @@ class RegisterController extends Controller
         ]);
     }
 
+    public function insertAPI(Request $request, $name, $lastname, $email, $company, $sector) {
+
+    $permitted = "123456789ABCDEFG";
+    $pass = substr(str_shuffle($permitted), 0, 8);
+
+    $role = 1;
+
+    User::create([
+    'name' => $name,
+    'lastname' => $lastname,
+    'email' => $email,
+    'role' => $role,
+    'company' => $company,
+    'sector' => $sector,
+    'password' => bcrypt($pass),
+    ]);
+
+    echo $name;
+    echo $lastname;
+    echo $email;
+    echo $role;
+    echo $company;
+    echo $sector;
+    echo $pass;
+
+    $data = array(
+            'name'=>$name,
+            'lastname'=>$lastname,
+            'email'=>$email,
+            'role'=>$role,
+            'company'=>$company,
+            'sector'=>$sector,
+            'password'=>$pass
+            );
+
+    return view('notification')->with($data);
+
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
