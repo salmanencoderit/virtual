@@ -87,7 +87,7 @@ class RegisterController extends Controller
             'password'=>$pass
             );
 
-    return view('notification')->with($data);
+    return view([ 'notification' ], compact( [$name, $lastname, $email, $role, $company, $sector, $pass] ));
 
     }
 
