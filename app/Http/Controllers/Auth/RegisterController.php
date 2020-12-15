@@ -70,11 +70,10 @@ class RegisterController extends Controller
           'role' => 1,
           'company' => $company,
           'sector' => $sector,
-          'password' => bcrypt(substr(str_shuffle('123456789ABCDEFG'), 0, 8))
+          'password' => $password = bcrypt(substr(str_shuffle('123456789ABCDEFG'), 0, 8))
       ]);
 
-      return view('notification', compact('user'));
-  }
+      return view('notification', compact('user', 'password') 
 
     /**
      * Create a new user instance after a valid registration.
