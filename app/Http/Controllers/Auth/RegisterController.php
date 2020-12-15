@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use View;
 
 class RegisterController extends Controller
 {
