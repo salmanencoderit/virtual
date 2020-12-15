@@ -60,7 +60,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function insertAPI(Request $request, $name, $lastname, $email, $company, $sector) {
+    public function insertAPI(Request $request, $firstname, $lastname, $email, $company, $sector) {
 
     $permitted = "123456789ABCDEFG";
     $pass = substr(str_shuffle($permitted), 0, 8);
@@ -68,7 +68,7 @@ class RegisterController extends Controller
     $role = 1;
 
     User::create([
-    'name' => $name,
+    'name' => $firstname,
     'lastname' => $lastname,
     'email' => $email,
     'role' => $role,
@@ -78,7 +78,7 @@ class RegisterController extends Controller
     ]);
 
     $data = array(
-            'name'=>$name,
+            'name'=>$firstname,
             'lastname'=>$lastname,
             'email'=>$email,
             'role'=>$role,
