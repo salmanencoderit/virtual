@@ -73,7 +73,7 @@ class RegisterController extends Controller
           'password' => bcrypt(substr(str_shuffle('123456789ABCDEFG'), 0, 8))
       ]);
 
-      return view()->exists('notification') ? view('notification', compact('user') : abort(404);
+      return view('notification', compact('user'));
   }
 
     /**
