@@ -61,7 +61,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function insertAPI(Request $request, $firstname, $lastname, $email, $company, $sector)
+    public function insertAPI(Request $request, $firstname, $lastname, $email, $company, $sector, $messe)
   {
       $permitted = "123456789ABCDEFG";
       $password = substr(str_shuffle($permitted), 0, 8);
@@ -76,7 +76,7 @@ class RegisterController extends Controller
           'password' => bcrypt($password)
       ]);
 
-      return view('notification', compact('user', 'password'));
+      return view('notification', compact('user', 'password', 'messe'));
   }
 
     /**
