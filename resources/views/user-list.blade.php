@@ -5,8 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Virtual Exhibition</title>
-        
+        <title>WeddingExpo: Virtual Meeting Rooms</title>
+
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <!-- Styles -->
@@ -61,7 +61,7 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-            
+
             .card-img img{
                 max-width: 100%;
             }

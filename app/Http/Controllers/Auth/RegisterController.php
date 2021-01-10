@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use View;
 
 class RegisterController extends Controller
 {
@@ -58,6 +60,24 @@ class RegisterController extends Controller
             'wedding' => ['required', 'date'],
         ]);
     }
+
+    public function insertAPI(Request $request, $firstname, $lastname, $email, $company, $sector, $messe)
+  {
+      $permitted = "123456789ABCDEFG";
+      $password = substr(str_shuffle($permitted), 0, 8);
+
+      $user = User::create([
+          'name' => $firstname,
+          'lastname' => $lastname,
+          'email' => $email,
+          'role' => 1,
+          'company' => $company,
+          'sector' => $sector,
+          'password' => bcrypt($password)
+      ]);
+
+      return view('notification', compact('user', 'password', 'messe'));
+  }
 
     /**
      * Create a new user instance after a valid registration.

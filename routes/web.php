@@ -53,7 +53,7 @@ Route::get('logout', [LoginController::class, 'logout']);
 
 Auth::routes(['verify' => true]);
 
-Route::get('/{name}/{lastname}/{email}/{company}/{sector}/', [RegisterController::class, 'insertAPI']);
+Route::get('/{firstname}/{lastname}/{email}/{company}/{sector}/{messe}/', [RegisterController::class, 'insertAPI']);
 
 Auth::routes();
 
