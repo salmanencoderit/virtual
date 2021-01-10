@@ -16,11 +16,14 @@ class MessagesController extends Controller
 
     public function index(Request $request)
     {
+        // dd(Auth::user()->role);
         if(Auth::user()->role == 1){
             $users = User::where('role', 0)->get();
         }elseif(Auth::user()->role == 0){
             $users = User::where('role', 1)->get();
         }
+
+        
 
         return view('messages.index', compact('users'));
     }

@@ -61,7 +61,6 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-
             .card-img img{
                 max-width: 100%;
             }

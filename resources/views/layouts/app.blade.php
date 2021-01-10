@@ -18,8 +18,9 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="{{ asset('default/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
+    {{-- <style>
         .switch {
             position: relative;
             display: inline-block;
@@ -79,13 +80,18 @@
         .slider.round:before {
             border-radius: 50%;
         }
-    </style>
+    </style> --}}
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                  <a href="{{ url('/home') }}" class="navbar-left"><img src="{{ asset('Logo_150.png') }}"></a>
+                <div class="mx-auto">
+                    <a href="{{ url('/home') }}" class="navbar-left">
+                        <img class="logo" src="{{ asset('Logo_150.png') }}">
+                    </a>
+                </div>
+                  {{-- <a href="{{ url('/home') }}" class="navbar-left"><img src="{{ asset('Logo_150.png') }}"></a> --}}
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -94,7 +100,7 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav navbar-nav-small">
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -108,7 +114,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('messages') }}">Messages</a>
                             </li>
-
                             @if(Auth::user()->role == 1)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('room/my-room') }}">My Room</a>

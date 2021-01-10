@@ -6,14 +6,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>WeddingExpo: Virtual Meeting Rooms</title>
-
         <!-- Fonts -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('default/css/style.css') }}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
         <!-- Styles -->
         <style>
-            html, body {
+             /* html, body {
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
@@ -63,7 +64,10 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
             .card-img img{
                 max-width: 100%;
             }
@@ -117,21 +121,88 @@
             -webkit-transform: translateX(26px);
             -ms-transform: translateX(26px);
             transform: translateX(26px);
-            }
-
-            /* Rounded sliders */
+            } 
             .slider.round {
             border-radius: 34px;
             }
 
             .slider.round:before {
             border-radius: 50%;
-            }
+            }  */
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+            <div class="container">
+                <div class="mx-auto">
+                    <a href="{{ url('/home') }}" class="navbar-left">
+                        <img class="w-100 logo" src="{{ asset('Logo_150.png') }}">
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+
+                    </ul>
+                    <ul class="navbar-nav navbar-nav-small">
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('messages') }}">Messages</a>
+                            </li>
+
+                            @if(Auth::user()->role == 1)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('room/my-room') }}">My Room</a>
+                            </li>
+                            <label class="switch">
+                                @if(Auth::user()->role == 1 && Auth::user()->online == 1)
+                                    <input type="checkbox" class="online" value="0" checked>
+                                @else
+                                    <input type="checkbox" class="online" value="1">
+                                @endif
+                                <span class="slider round"></span>
+                            </label>
+                            @elseif(Auth::user()->role == 2)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('user-list') }}">Users</a>
+                                </li>
+                            @endif
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="flex-center pt-5 pb-5">
+            {{-- @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('messages') }}">Messages</a>
@@ -154,22 +225,18 @@
                         <a href="{{ route('register') }}">Register</a>
                     @endauth
                 </div>
-            @endif
+            @endif --}}
+
+            
+
           <div class="container">
             <div class="content">
                 <div class="title m-b-md">
                     WeddingExpo: Virtual Meeting Rooms
                 </div>
-
-                {{-- {!! Form::open(['url' => 'room/create']) !!}
-                    {!! Form::label('roomName', 'Create or Join a Video Chat Room') !!}
-                {!! Form::text('roomName') !!}
-                {!! Form::submit('Go') !!}
-                {!! Form::close() !!} --}}
-                <div class="row">
+                {{-- <div class="row">
                     @if($rooms)
                     @foreach ($rooms as $room)
-                    {{-- @dd($room); --}}
                     @if ($room != null)
                     <div class="col-md-3">
                         <a href="{{ url('/room/join/'.$room['room']) }}">
@@ -191,9 +258,42 @@
                     @endif
                     @endforeach
                     @endif
+                </div> --}}
+
+                <div class="row">
+                    @if($rooms)
+                        @foreach ($rooms as $room)
+                            @if ($room != null)
+                                <div class="col-md-3 col-sm-6 col-12 ent-card-padding">
+                                    <div class="card">
+                                        <div class="database">
+                                            @if($room['avatar'] != null)
+                                                <img class="card-img-top" src="{{ asset('/storage/'.$room['avatar']) }}" alt="Card image">
+                                            @else
+                                                <img class="card-img-top" src="{{ asset('default/image/user-avatar.png') }}" alt="Card image">
+                                            @endif
+                                            @if($room['is_online'] == "0")
+                                                <i class="fa fa-circle text-danger"></i>
+                                            @else
+                                                <i class="fa fa-circle text-success"></i>
+                                            @endif
+                                        </div>
+                                        <div class="card-body">
+                                        <h4 class="card-title">{{ $room['name'] }}</h4>
+                                        <p class="card-text">{{ $room['sector'] }}</p>
+                                        <p class="card-text">{{ $room['company'] }}</p>
+                                        <a href="{{ url('/room/join/'.$room['room']) }}" class="btn btn-primary">Join</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    @endif
                 </div>
+
             </div>
           </div>
+
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

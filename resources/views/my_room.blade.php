@@ -6,12 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Laravel</title>
-
+        <script src="{{ asset('js/app.js') }}" defer></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('default/css/style.css') }}" rel="stylesheet">
 
         <!-- Styles -->
-        <style>
+        {{-- <style>
             html, body {
                 background-color: #fff;
                 color: #636b6f;
@@ -122,7 +124,7 @@
             .slider.round:before {
             border-radius: 50%;
             }
-        </style>
+        </style> --}}
 
         <!-- Scripts -->
         <script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js"></script>
@@ -211,8 +213,77 @@
         </script>
     </head>
     <body>
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+            <div class="container">
+                <div class="mx-auto">
+                    <a href="{{ url('/home') }}" class="navbar-left">
+                        <img class="logo" src="{{ asset('Logo_150.png') }}">
+                    </a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+
+                    </ul>
+                    <ul class="navbar-nav navbar-nav-small">
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('messages') }}">Messages</a>
+                            </li>
+
+                            @if(Auth::user()->role == 1)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('room/my-room') }}">My Room</a>
+                            </li>
+                            <label class="switch">
+                                @if(Auth::user()->role == 1 && Auth::user()->online == 1)
+                                    <input type="checkbox" class="online" value="0" checked>
+                                @else
+                                    <input type="checkbox" class="online" value="1">
+                                @endif
+                                <span class="slider round"></span>
+                            </label>
+                            @elseif(Auth::user()->role == 2)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('user-list') }}">Users</a>
+                                </li>
+                            @endif
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+            {{-- @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                     @else
@@ -221,7 +292,6 @@
                     @endauth
                 </div>
             @endif
-
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -240,7 +310,9 @@
                         <a href="{{ route('register') }}">Register</a>
                     @endauth
                 </div>
-            @endif
+            @endif --}}
+
+
             <div class="content">
                 <div class="title m-b-md">
                     WeddingExpo: Virtual Meeting Rooms

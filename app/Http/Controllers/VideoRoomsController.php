@@ -58,14 +58,17 @@ class VideoRoomsController extends Controller
                     $user->sid = $room->sid;
                     $user->save();
 
-                    if ($user->online == 1) {
+                    // if ($user->online == 1) {
                         $room_map = array(
                             'name'  => $user->name,
                             'avatar' => $user->avatar,
                             'room'  => $room->uniqueName,
+                            'is_online'  => $user->online,
+                            'company'  => $user->company,
+                            'sector'  => $user->sector,
                         );
                         return $room_map;
-                    }
+                    // }
                 }
             }, $allRooms);
             
@@ -142,6 +145,8 @@ class VideoRoomsController extends Controller
         $videoGrant->setRoom(Auth::user()->email);
         
         $token->addGrant($videoGrant);
+
+        
 
         return view('my_room', [ 'accessToken' => $token->toJWT(), 'roomName' => Auth::user()->email ]);
     }

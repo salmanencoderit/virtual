@@ -135,7 +135,6 @@
             function trackRemoved(track) {
                 track.detach().forEach( function(element) { element.remove() });
             }
-
             function partcipantLeave(){
                 Twilio.Video.connect('{{ $accessToken }}', {
                     name: '{{ $roomName }}',
